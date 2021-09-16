@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>Smart Glasses</title>
+</header>
+
+<body style="background-color:darkslategrey;">
+
+
+  <h1 style="color:floralwhite;">Smart Glasses</h1>
+
+
+  <img style="vertical-align: middle;" src="{{url_for('static', filename='Smart-Bril.jpg')}}">
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Style the header */
+    header {
+      background-color: rgb(223, 17, 195);
+      padding: 30px;
+      text-align: center;
+      font-size: 35px;
+      color: white;
+    }
+
+    /* Container for flexboxes */
+    section {
+      display: -webkit-flex;
+      display: flex;
+    }
+
+    /* Style the navigation menu */
+    nav {
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      background: #ccc;
+      padding: 20px;
+    }
+
+    /* Style the list inside the menu */
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    /* Style the content */
+    article {
+      -webkit-flex: 3;
+      -ms-flex: 3;
+      flex: 3;
+      background-color: #f1f1f1;
+      padding: 10px;
+    }
+
+    /* Style the footer */
+    footer {
+      background-color: #777;
+      padding: 10px;
+      text-align: center;
+      color: white;
+    }
+
+    /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+    @media (max-width: 600px) {
+      section {
+        -webkit-flex-direction: column;
+        flex-direction: column;
+      }
+    }
+  </style>
+  </head>
+
+  <body>
+
+    <header>
+      <h2>Foto's, tijd, temperatuur en kompas</h2>
+    </header>
+
+    <section>
+      <div>
+        <!-- <p id="demo"></p> -->
+        {% for image in image_data %}
+        <div style="display:flex; justify-content:center; align-items:center;">
+          <div style="width:40%;">
+            <img style="width: 100%;" src="{{url_for('static', filename=image[2])}}" />
+          </div>
+          <div style="width:40%;margin-left:10%;color:white;font-weight:bold;">
+            <p>Tijd/datum: {{image[1]}}</p>
+            <p>Temperatuur: {{image[3]}}</p>
+            <p>Kompas: {{image[4]}}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+  </body>
+
+</html>

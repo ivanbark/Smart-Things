@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<header>
+<title>Smart Glasses</title>
+</header>
+<body style="background-color:darkslategrey;">
+
+
+    <h1 style="color:floralwhite;">Smart Glasses</h1>
+
+
+<img style="vertical-align: middle;" src="Smart-Bril.jpg">
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: rgb(223, 17, 195);
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Container for flexboxes */
+section {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Style the navigation menu */
+nav {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Style the content */
+article {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  section {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h2>Foto's, tijd, temperatuur en kompas</h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+      <h2>Foto</h2>
+
+        <p id="demo"></p>
+        
+    </ul>
+  </nav>
+  
+  <nav>
+    <ul>
+      <h2>Tijd Temperatuur Kompas
+      </h2>
+
+        <p id="ttk"></p>
+    </ul>
+  </nav>
+
+  <script>
+    var image_data = [{{ ', '.join(image_data) }}];
+    var image_path = "";
+    
+    for (image in image_data) {
+      image_path = image_data[2];
+      temp = image_data[3];
+      time = image_data[1];
+      facing = image_data[4];
+
+      var ttk = "Temperatuur/Tijd/Kompas" + temp + time + facing + "<br>";     
+    }
+    
+    document.getElementById("demo").innerHTML = image_path;
+
+    document.getElementById("ttk").innerHTML = ttk;
+  </script>
+
+</body>
+</html>
